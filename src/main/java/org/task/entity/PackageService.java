@@ -1,5 +1,7 @@
 package org.task.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +19,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "package_service")
+@Table(name = "package_services")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -30,6 +32,7 @@ public class PackageService {
     private UUID id;
 
     @CreationTimestamp
+    @Column(name = "creation_date")
     private Date creationDate;
 
     @NotBlank
@@ -42,12 +45,11 @@ public class PackageService {
     @PackageServiceValue
     private Integer value;
 
-    private boolean isDeleted = false;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "tariff_id", nullable = false)
+    @JsonIgnore
+    private Tariff tariff;
 
-    @PrePersist
-    public void setId() {
-        if (this.id == null) {
-            this.id = UUID.randomUUID();
-        }
-    }
+    @Column(name = "is_deleted")
+    private boolean isDeleted = false;
 }

@@ -1,5 +1,6 @@
 package org.task.entity;
 
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.sql.Date;
@@ -28,21 +28,20 @@ public class Tariff {
     private UUID id;
 
     @CreationTimestamp
+    @Column(name = "creation_date")
     private Date creationDate;
 
     @NotBlank
     @Size(max = 128)
     private String name;
 
+    @OneToMany(mappedBy = "tariff", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private Set<PackageService> packageServices;
+
+    @Column(name = "is_archived")
     private boolean isArchived = false;
 
+    @Column(name = "is_deleted")
     private boolean isDeleted = false;
 
-
-    @PrePersist
-    public void setId() {
-        if (this.id == null) {
-            this.id = UUID.randomUUID();
-        }
-    }
 }
