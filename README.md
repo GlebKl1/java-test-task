@@ -1,5 +1,5 @@
 # Tariff Showcase
-=======
+
 Prerequisites
 -----------
 
