@@ -24,7 +24,8 @@ How to run application locally
 2. curl http://localhost:8080/tariffs?isArchived=true - returns Set of archived tariffs
 3. curl http://localhost:8080/tariffs/internet/unlimited - returns Set of tariffs, that have unlimited internet included
 4. curl http://localhost:8080/tariffs/calls/unlimited - returns Set of tariffs, that have unlimited calls included
-5. curl -H "Content-Type: application/json" -XPOST -d '{                     
+5. curl http://localhost:8080/tariffs/name={name} - returns Set of tariffs which names are like the provided path variables
+6. curl -H "Content-Type: application/json" -XPOST -d '{                     
    "name": "testName",
    "packageServices": [
    {                  

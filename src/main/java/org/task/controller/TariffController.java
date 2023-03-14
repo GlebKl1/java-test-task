@@ -46,4 +46,10 @@ public class TariffController {
   public Set<Tariff> findAllWithUnlimitedCallsIncluded() {
     return tariffService.findAllByUnlimitedCallsIncluded();
   }
+
+  @GET
+  @Path("/name={name}")
+  public Set<Tariff> findAllByNameContaining(@PathParam(value = "name") String name) {
+    return tariffService.findAllByNameContaining(name);
+  }
 }
