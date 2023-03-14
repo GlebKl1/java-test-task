@@ -16,7 +16,7 @@ How to run application locally
 1. Clone java-test-task repository from GitHub \
    [git@github.com:GlebKl1/java-test-task.git] (https://github.com/GlebKl1/java-test-task.git)
 2. Run `docker-compose up --build
-3. The application is not available on localhost port 8080
+3. The application is not available on localhost port 8080 (http://localhost:8080)
 4. Use requests from Specification to send requests to the server and get response from it
 
 ## Requests(API usage)
@@ -33,4 +33,4 @@ How to run application locally
    "value": -1
    }
    ]                             
-   }' 'http://localhost:8080/tariffs' - save the resource
+   }' 'http://localhost:8080/tariffs' - save a tariff
