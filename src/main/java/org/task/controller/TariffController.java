@@ -4,14 +4,7 @@ import java.util.Set;
 import java.util.UUID;
 import javax.inject.Inject;
 import javax.validation.Valid;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import org.task.entity.Tariff;
 import org.task.service.TariffService;
@@ -24,7 +17,7 @@ public class TariffController {
   protected TariffService tariffService;
 
   @GET
-  @Path("/{id}")
+  @Path("/id={id}")
   public Tariff findById(@PathParam(value = "id") UUID id) {
     return tariffService.findById(id);
   }
@@ -43,15 +36,14 @@ public class TariffController {
   }
 
   @GET
-  @Path("/internet")
+  @Path("/internet/unlimited")
   public Set<Tariff> findAllWithUnlimitedInternetIncluded() {
     return tariffService.findAllByUnlimitedInternetIncluded();
   }
 
   @GET
-  @Path("/calls")
+  @Path("/calls/unlimited")
   public Set<Tariff> findAllWithUnlimitedCallsIncluded() {
     return tariffService.findAllByUnlimitedCallsIncluded();
   }
-
 }
