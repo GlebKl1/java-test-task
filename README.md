@@ -10,8 +10,6 @@ Prerequisites
 * Installed Git (optional, to clone from repository)
 * Some text editor/IDE for editing configuration files (optional)
 
-## Running the application in dev mode
-
 How to run application locally
 ------------
 
